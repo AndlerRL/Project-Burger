@@ -1,0 +1,44 @@
+* {
+  transition: 1s cubic-bezier(0.165, 0.84, 0.44, 1) all;
+}
+
+.Burger {
+  width: 100%;
+  margin: auto;
+  min-height: 300px;
+  overflow: auto;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.AddIngr {
+  animation: blink 1.25s infinite;
+  transition: cubic-bezier(.79,.14,.15,.86) all;
+}
+
+@keyframes blink {
+  0%, 100% {opacity: 1;}
+  50% {opacity: .3}
+}
+
+@media (min-width: 1000px) and (min-height: 700px) {
+  .Burger {
+    width: 700px;
+    height: 600px;
+  }
+}
+
+@media (min-width: 500px) and (min-height: 401px) {
+  .Burger {
+    width: 450px;
+    height: 400px;
+  }
+}
+
+@media (min-width: 500px) and (max-height: 400px) {
+  .Burger {
+    width: 350px;
+    height: 300px;
+  }
+}

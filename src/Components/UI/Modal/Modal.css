@@ -1,0 +1,84 @@
+.Modal {
+  position: fixed;
+  z-index: 500;
+  background-color: whitesmoke;
+  width: 70%;
+  border: transparent;
+  border-radius: 4px;
+  box-shadow: 0 0 500px rgba(180,180,180,.9);
+  padding: 16px;
+  left: 15%;
+  top: calc(30% - 100px);
+  box-sizing: border-box;
+  transition: all .60s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-align: center;
+  color: darkslategray;
+}
+
+.Modal span:first-child {
+  float: right;
+  right: 0;
+  padding: 0;
+  margin-top: -16px;
+  margin-right: -16px;
+  opacity: .5;
+  font-size: 1.5em;
+  color: tomato;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+}
+
+.Modal span:first-child:hover {
+  opacity: 1;
+  color: firebrick;
+  border-top-right-radius: 4px;
+  background-color: tomato;
+  box-shadow: -2px 2px 4px 1px rgba(0,0,0,.3);
+}
+
+.Modal span:first-child i:hover {
+  transform: rotateZ(360deg);
+  transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.Modal span:first-child:active {
+  box-shadow: inset -2px 2px 4px 2px rgba(0,0,0,.3);
+  border: 1px solid rgba(47, 79, 79, .3);
+  transition: all .3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.Modal span:last-child {
+  text-transform: capitalize;
+}
+
+.Modal li {
+  text-align: left;
+  margin-left: 3%;
+  font-weight: 600;
+  list-style: none;
+}
+
+.Modal li i {
+  color: tomato;
+  margin-right: 8px;
+}
+
+.Modal li i:last-child {
+  margin-left: 5px;
+  font-size: .9em;
+}
+
+.Modal div:last-child {
+  width: 80%;
+  padding: 0;
+  margin: 0 auto;
+}
+
+@media (min-width: 600px) {
+  .Modal {
+      width: 500px;
+      top: 25%;
+      left: calc(50% - 250px);
+  }
+}

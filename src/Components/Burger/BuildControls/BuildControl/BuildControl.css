@@ -1,0 +1,63 @@
+* {
+  transition: .25s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
+}
+
+.BuildControl {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0;
+}
+
+.BuildControl span i {
+  margin: 0 10px;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  font-size: 1.8em;
+  float: right;
+}
+
+.Disabled i {
+  color: #AC9980;
+  cursor: default !important;
+}
+
+.Disabled i:hover {
+  color: #AC9980;
+  cursor: not-allowed !important;
+}
+
+.Label {
+  display: inline-flex;
+  flex-flow: row;
+  padding: 5px;
+  margin: auto 10px;
+  font-weight: 500;
+  width: 220px;
+}
+
+.Label p {
+  margin: auto 15px;
+  color: darkslategray;
+  margin-top: 0;
+  letter-spacing: 1px;
+}
+
+.BuildControl .Less {  
+  color: #D39952;
+}
+
+.BuildControl .More {
+  color: #8F5E1E;
+}
+
+.BuildControl .Less:hover,
+.BuildControl .Less:active {  
+  color: #DAA972;
+}
+
+.BuildControl .More:hover,
+.BuildControl .More:active {
+  color: #99703F;
+}
