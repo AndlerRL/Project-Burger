@@ -1,5 +1,6 @@
 .Modal {
   position: fixed;
+  height: auto;
   z-index: 500;
   background-color: whitesmoke;
   width: 70%;
@@ -69,11 +70,11 @@
   font-size: .9em;
 }
 
-.Modal div:last-child {
+/* .Modal div:last-child {
   width: 80%;
   padding: 0;
   margin: 0 auto;
-}
+} */
 
 @media (min-width: 600px) {
   .Modal {
