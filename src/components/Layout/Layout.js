@@ -5,7 +5,7 @@ import css from './Layout.css';
 
 const Layout = props => (
   <Aux>
-    <div className={css.Toolbar}>
+    <div className={css.Toolbar + " z-depth-1"}>
       Toolbar, SideDrawer, Backdrop
     </div>
     <main className={css.MainContent}>

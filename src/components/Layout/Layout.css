@@ -1,11 +1,47 @@
 .Toolbar {
-  font-size: 2vw;
-  background-color: #2121213a;
-  padding: 1.25rem;
-  height: 1.75rem;
+  font-size: 5.8vw;
+  background-color: #c6ff00;
+  border-bottom: 3px solid #eeff41;
+  padding: 1rem;
+  height: 5.1rem;
 }
 
 .MainContent {
   margin-top: 16px;
-  font-size: 1.5vw;
+  font-size: 4vw;
+}
+
+@media (min-width: 500px) {
+  .Toolbar {
+    font-size: 3.2vw;
+    height: 4.5rem;
+  }
+
+  .MainContent {
+    font-size: 2.66vw;
+  }
+}
+
+@media (min-width: 700px) {
+  .Toolbar {
+    font-size: 2.6vw;
+    padding: 1rem;
+    height: 5rem;
+  }
+
+  .MainContent {
+    font-size: 2vw;
+  }
+}
+
+@media (min-width: 1000px) {
+  .Toolbar {
+    font-size: 1.8vw;
+    padding: 1rem;
+    height: 4.67rem;
+  }
+
+  .MainContent {
+    font-size: 1.66vw;
+  }
 }

@@ -1,12 +1,16 @@
 .Burger {
   width: 100vw;
   margin: 0 auto;
-  height: 50vh;
+  height: 41.666vh;
   overflow: scroll;
   text-align: center;
   font-weight: bold;
   font-size: 1.2rem;
-  border-bottom: 2px solid;
+}
+
+.NoIngredients {
+  font-weight: 200;
+  animation: blink 1.5s linear infinite;
 }
 
 @media (min-width: 500px) and (min-height: 400px) {
@@ -25,7 +29,19 @@
 
 @media (min-width: 1000px) and (min-height: 700px) {
   .Burger {
-    max-width: 40rem;
+    width: 40rem;
     height: 41.666rem;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1
+  }
+  50% {
+    opacity: 0.15
+  }
+  100% {
+    opacity: 1;
   }
 }
