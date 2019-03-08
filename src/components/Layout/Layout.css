@@ -1,0 +1,11 @@
+.Toolbar {
+  font-size: 2vw;
+  background-color: #2121213a;
+  padding: 1.25rem;
+  height: 1.75rem;
+}
+
+.MainContent {
+  margin-top: 16px;
+  font-size: 1.5vw;
+}
