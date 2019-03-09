@@ -8,7 +8,7 @@
 .BuildControl > button {
   display: block;
   font: inherit;
-  padding: .6rem;
+  padding: .4rem;
   margin: 0 .75rem;
   width: 3.2rem;
   height: 3.2rem;
@@ -16,16 +16,18 @@
   border-radius: 50%;
   cursor: pointer;
   outline: none;
+  user-select: none;
 }
 
 .BuildControl > button:disabled {
-  background-color: #00897b;
-  border: 1px solid #00796b;
-  color: #009688;
-  cursor: default;
+  background-color: #00897b !important;
+  border: 1px solid #00796b3a !important;
+  color: #4db6ac !important;
+  box-shadow: 0 1px 3px #2121212a;
+  cursor: not-allowed;
 }
 
-.BuildControl > button:hover:disabled {
+.BuildControl > button:disabled:hover {
   background-color: #004d40;
   color: #2121213a;
   cursor: not-allowed;
@@ -33,9 +35,11 @@
 
 .Label {
   padding: 10px;
-  font-weight: bold;
+  font-size: 1.3rem;
+  font-weight: 400;
   width: 120px;
   text-align: center;
+  user-select: none;
 }
 
 .BuildControl > .Less {  

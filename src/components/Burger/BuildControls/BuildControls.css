@@ -9,3 +9,35 @@
   padding: 1rem 0;
   border-top: 1rem solid #eeff41;
 }
+
+.BuildControls > .OrderBtn {
+  margin: 2rem 0;
+}
+
+.BuildControls > .OrderBtn:hover,
+.BuildControls > .OrderBtn:active {
+  background-color: #004d40 !important;
+}
+
+.BuildControls > .OrderBtn:disabled {
+  background-color: #00897b !important;
+  border: 1px solid #00796b3a !important;
+  color: #4db6ac !important;
+  cursor: not-allowed;
+}
+
+.BuildControls > .OrderBtn:not(:disabled) {
+  animation: enable 0.33s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes enable {
+  0% {
+      transform: scale(1);
+  }
+  60% {
+      transform: scale(1.15);
+  }
+  100% {
+      transform: scale(1);
+  }
+}
