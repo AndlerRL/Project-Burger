@@ -1,63 +1,63 @@
-* {
-  transition: .25s cubic-bezier(0.175, 0.885, 0.32, 1.275) all;
-}
-
 .BuildControl {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 5px 0;
+  margin: 1rem auto;
 }
 
-.BuildControl span i {
-  margin: 0 10px;
+.BuildControl > button {
+  display: block;
+  font: inherit;
+  padding: .4rem;
+  margin: 0 .75rem;
+  width: 3.2rem;
+  height: 3.2rem;
+  border: 1px solid #AA68173a;
+  border-radius: 50%;
   cursor: pointer;
   outline: none;
-  padding: 0;
-  font-size: 1.8em;
-  float: right;
+  user-select: none;
 }
 
-.Disabled i {
-  color: #AC9980;
-  cursor: default !important;
+.BuildControl > button:disabled {
+  background-color: #00897b !important;
+  border: 1px solid #00796b3a !important;
+  color: #4db6ac !important;
+  box-shadow: 0 1px 3px #2121212a;
+  cursor: not-allowed;
 }
 
-.Disabled i:hover {
-  color: #AC9980;
-  cursor: not-allowed !important;
+.BuildControl > button:disabled:hover {
+  background-color: #004d40;
+  color: #2121213a;
+  cursor: not-allowed;
 }
 
 .Label {
-  display: inline-flex;
-  flex-flow: row;
-  padding: 5px;
-  margin: auto 10px;
-  font-weight: 500;
-  width: 220px;
+  padding: 10px;
+  font-size: 1.3rem;
+  font-weight: 400;
+  width: 120px;
+  text-align: center;
+  user-select: none;
 }
 
-.Label p {
-  margin: auto 15px;
-  color: darkslategray;
-  margin-top: 0;
-  letter-spacing: 1px;
+.BuildControl > .Less {  
+  background-color: #004d40;
+  color: #f5f5f5;
 }
 
-.BuildControl .Less {  
-  color: #D39952;
+.BuildControl > .More {
+  background-color: #004d40;
+  color: #f5f5f5;
 }
 
-.BuildControl .More {
-  color: #8F5E1E;
+.BuildControl > .Less:hover,
+.BuildControl > .Less:active {  
+  background-color: #00796b;
 }
 
-.BuildControl .Less:hover,
-.BuildControl .Less:active {  
-  color: #DAA972;
-}
-
-.BuildControl .More:hover,
-.BuildControl .More:active {
-  color: #99703F;
+.BuildControl > .More:hover,
+.BuildControl > .More:active {
+  background-color: #00796b;
 }

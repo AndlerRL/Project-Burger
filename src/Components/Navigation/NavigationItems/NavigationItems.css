@@ -4,13 +4,13 @@
   list-style: none;
   display: flex;
   flex-flow: column;
-  justify-content: space-between;
+  align-items: center;
   height: 100%;
+  transition: all .33s ease-in-out;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 500px) {
   .NavigationItems {
     flex-flow: row;
-    margin: 0 16px;
   }
 }

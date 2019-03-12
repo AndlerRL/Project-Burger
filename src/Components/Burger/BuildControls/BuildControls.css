@@ -1,57 +1,43 @@
 .BuildControls {
   width: 100%;
-  background-color: whitesmoke;
+  background-color: #c6ff00;
   display: flex;
-  align-items: center;
   flex-flow: column;
-  margin: auto;
-  padding: 10px 0;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 6px #ccccccc0;
+  align-items: center;
+  box-shadow: 0 2px 1px #2121213a;
+  margin: 0 auto;
+  padding: 1rem 0;
+  border-top: 1rem solid #eeff41;
 }
 
-.BuildControls p {
-  color:darkslategray;
+.BuildControls > .OrderBtn {
+  margin: 2rem 0;
 }
 
-.OrderButton {
-  background-color: #DAD735;
-  cursor: pointer;
-  border: transparent;
-  border-radius: 3px;
-  color: #966909;
-  margin-top: 15px;
-  font-family: inherit;
-  font-size: 1.2em;
-  padding: 15px 30px;
-  box-shadow: 2px 2px 4px #966909c0;
+.BuildControls > .OrderBtn:hover,
+.BuildControls > .OrderBtn:active {
+  background-color: #004d40 !important;
 }
 
-.OrderButton:hover,
-.OrderButton:active {
-  background-color: #A0DB41;
-  color: #966909;
-}
-
-.OrderButton:disabled {
-  background-color: #C7C6C6;
+.BuildControls > .OrderBtn:disabled {
+  background-color: #00897b !important;
+  border: 1px solid #00796b3a !important;
+  color: #4db6ac !important;
   cursor: not-allowed;
-  color: #888888;
-  animation: disable 0.5s linear;
 }
 
-.OrderButton:not(:disabled) {
-  animation: enable 0.5s linear;
+.BuildControls > .OrderBtn:not(:disabled) {
+  animation: enable 0.33s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 @keyframes enable {
-  0% { transform: scale(1); }
-  60% { transform: scale(1.1); }
-  100% { transform: scale(1); }
-}
-
-@keyframes disable {
-  0% { transform: scale(1); }
-  60% { transform: scale(0.9); }
-  100% { transform: scale(1); }
+  0% {
+      transform: scale(1);
+  }
+  60% {
+      transform: scale(1.15);
+  }
+  100% {
+      transform: scale(1);
+  }
 }

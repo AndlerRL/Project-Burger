@@ -1,38 +1,29 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import classes from './Burger.css';
-import BurgerIngredient from './BurgerIngredients/BurgerIngredients';
+import css from './Burger.css';
+import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
 
-class Burger extends Component {
-  render() {
-    let transformedIngredients = Object.keys(this.props.ingredients)
-      .map(igKey => {
-        return [...Array(this.props.ingredients[igKey])].map((_, i) => {
-          return <BurgerIngredient key={igKey + i} type={igKey} />;
-        });
+const burger = props => {
+  let transformedIngredients = Object.keys(props.ingredients)
+    .map(igKey => {
+      return [...Array(props.ingredients[igKey])].map((_, index) => {
+        return <BurgerIngredient key={igKey + index} type={igKey} />
       })
-      .reduce((arr, el) => {
-        return arr.concat(el)
-      }, []);
+    })
+    .reduce((arr, ele) => {
+      return arr.concat(ele)
+    }, []);
 
-    if (transformedIngredients.length === 0)
-      transformedIngredients = <p className={classes.AddIngr}> Please start adding ingredients! </p>
+  if (transformedIngredients.length === 0)
+    transformedIngredients = <p className={css.NoIngredients}>Please, start adding ingredients!</p>
 
-    // console.log(transformedIngredients);
-
-    return (
-      <div className={classes.Burger}>
-        <BurgerIngredient type="bread-top" />
-        {transformedIngredients}
-        <BurgerIngredient type="bread-bottom" />
-      </div>
-    );
-  }
+  return (
+    <div className={css.Burger}>
+      <BurgerIngredient type="bread-top" />
+      { transformedIngredients }
+      <BurgerIngredient type="bread-bottom" />
+    </div>
+  );
 };
 
-Burger.propTypes = {
-  ingredients: PropTypes.object.isRequired
-};
-
-export default Burger;
+export default burger;

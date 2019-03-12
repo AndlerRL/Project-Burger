@@ -1,18 +1,53 @@
 .SideDrawer {
   position: fixed;
   width: 280px;
-  max-width: 50%;
+  max-width: 70%;
   height: 100%;
   left: 0;
   top: 0;
   z-index: 200;
-  background-color: whitesmoke;
-  padding: 0 16px 32px;
+  background-color: #c6ff00;
+  padding: 32px 0;
   box-sizing: border-box;
-  transition: transform .3s ease-out;
+  border-right: 4px solid #eeff41;
+  transition: transform .33s cubic-bezier(0.175, 0.885, 0.32, 1.05);
+  transition-delay: 300ms;
 }
 
-@media (min-width: 600px) {
+.Back {
+  margin: 1rem;
+  padding: .5rem;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 3.2rem;
+  height: 3.2rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid #2121213a;
+  transition: all .66s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.Back:hover,
+.Back:active {
+  background-color: #aeea00;
+  transform: rotateZ(-360deg);
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
+              0 3px 1px -2px rgba(0,0,0,0.12),
+              0 1px 5px 0 rgba(0,0,0,0.2) !important;
+}
+
+.SideDrawer > nav {
+  margin-top: 32px;
+  height: 100%;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  width: auto;
+}
+
+
+@media (min-width: 500px) {
   .SideDrawer {
     display: none;
   }
@@ -24,10 +59,4 @@
 
 .Close {
   transform: translateX(-100%);
-}
-
-.Logo {
-  margin-top: 8px;
-  margin-bottom: -18px;
-  height: 56px;
 }

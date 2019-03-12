@@ -1,49 +1,33 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 
-import classes from './BuildControls.css';
 import BuildControl from './BuildControl/BuildControl';
+import css from './BuildControls.css';
 
+const controls = [
+  { label: 'Salad', type: 'salad' },
+  { label: 'Bacon', type: 'bacon' },
+  { label: 'Cheese', type: 'cheese' },
+  { label: 'Meat', type: 'meat' }
+];
 
+const buildControls = props => (
+  <div className={css.BuildControls}>
+    <p>Current custom Burger Price: USD ${props.price.toFixed(2)}</p>
+    { controls.map(ctrl => (
+      <BuildControl
+        key={ctrl.label}
+        label={ctrl.label}
+        added={() => props.ingredientAdded(ctrl.type)}
+        removed={() => props.ingredientRemoved(ctrl.type)}
+        disabled={props.disabled[ctrl.type]} />
+    )) }
+    <button
+      className={"btn btn-large z-depth-1-half waves-effect waves-light teal darken-3 " + css.OrderBtn}
+      disabled={!props.purchasable}
+      onClick={props.ordered}>
+      ORDER NOW
+    </button>
+  </div>
+);
 
-class BuildControls extends Component {
-  render () {
-    const controls = [
-      { label: 'Salad', type: 'salad' },
-      { label: 'Bacon', type: 'bacon' },
-      { label: 'Cheese', type: 'cheese' },
-      { label: 'Meat', type: 'meat' }
-    ];
-
-    return (
-      <div className={classes.BuildControls}>
-      <p>Current Price: <i className="fa fa-dollar"></i> <strong>{this.props.price.toFixed(2)}</strong> </p>
-      {controls.map(ctrl => (
-        <BuildControl
-          key={ctrl.label}
-          label={ctrl.label}
-          added={() => this.props.ingredientAdded(ctrl.type)}
-          removed={() => this.props.ingredientRemoved(ctrl.type)}
-          disabled={this.props.disabled[ctrl.type]} />
-      ))}
-      <button
-        className={classes.OrderButton}
-        disabled={!this.props.purchasable}
-        onClick={this.props.ordered} >
-        <i className="fa fa-credit-card"></i>  ORDER NOW
-      </button>
-    </div>
-    )
-  }
-
-  
-};
-
-BuildControls.propTypes = {
-  controls: PropTypes.array,
-  price: PropTypes.number,
-  label: PropTypes.string,
-  type: PropTypes.string
-}
-
-export default BuildControls;
+export default buildControls;
