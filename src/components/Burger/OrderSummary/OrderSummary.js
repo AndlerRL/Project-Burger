@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '../../UI/Button/Button';
+import Icons from '../../UI/Icons/Icons';
 import Aux from '../../../hoc/Aux';
 import withClass from '../../../hoc/with-class';
 import css from './OrderSummary.css'
@@ -23,7 +25,20 @@ const orderSummary = props => {
       <ul>
         {ingredientSummary}
       </ul>
+      <p><strong>Total Price: USD ${props.price.toFixed(2)}</strong></p>
       <p>Continue to Checkout?</p>
+      <Button
+        clicked={props.purchaseCancelled}
+        btnType="Danger">
+        <span>CANCEL</span>
+        <Icons size="small">close</Icons>
+      </Button>
+      <Button
+        clicked={props.purchaseContinued}
+        btnType="Success">
+        <span>CONTINUE</span>
+        <Icons size="small">check</Icons>
+      </Button>
     </Aux>
   )
 }

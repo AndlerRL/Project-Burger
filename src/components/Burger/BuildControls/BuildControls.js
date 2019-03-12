@@ -23,7 +23,8 @@ const buildControls = props => (
     )) }
     <button
       className={"btn btn-large z-depth-1-half waves-effect waves-light teal darken-3 " + css.OrderBtn}
-      disabled={!props.purchasable}>
+      disabled={!props.purchasable}
+      onClick={props.ordered}>
       ORDER NOW
     </button>
   </div>
