@@ -1,8 +1,9 @@
 import React from 'react';
 
-import NavigationItems from '../NavigationItems/NavigationItems';
 import Icons from '../../UI/Icons/Icons';
 import Logo from '../../Logo/Logo';
+import NavigationItems from '../NavigationItems/NavigationItems';
+
 import css from './Toolbar.css';
 
 const toolbar = props => (
