@@ -1,6 +1,7 @@
 .MainContent {
   margin-top: 72px;
   font-size: 4vw;
+  min-height: 64.25rem;
 }
 
 .Copyright {

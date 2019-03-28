@@ -5,7 +5,7 @@ body {
   padding: 0;
   flex-grow: 0;
   flex-shrink: 0;   
-  flex-basis: 26em;
+  flex-basis: 25em;
   font-family: -apple-system, BlinkMacSystemFont, "Cantarell", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

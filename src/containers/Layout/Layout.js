@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 
-import Toolbar from '../Navigation/Toolbar/Toolbar';
-import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
-import Aux from '../../hoc/Aux';
+import Aux from '../../hoc/Aux/Aux';
+import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
+import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
+
 import css from './Layout.css';
 
 class Layout extends Component {

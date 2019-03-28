@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Icons from '../../../UI/Icons/Icons';
+
 import css from './BuildControl.css';
 
 const buildControl = props => (
