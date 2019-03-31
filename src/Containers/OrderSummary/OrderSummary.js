@@ -10,6 +10,7 @@ import css from './OrderSummary.css'
 class OrderSummary extends Component {
   componentDidUpdate() {
     console.log('[OrderSummary] Did Update');
+    console.log(this.props)
   }
 
   render () {
@@ -17,9 +18,10 @@ class OrderSummary extends Component {
     .map(igKey => {
       return (
         <li key={igKey}>
-          <span>
-            <Icons size="small">arrow_drop_up</Icons>{igKey}:
-          </span> {this.props.ingredients[igKey]}
+          <span style={{textTransform: 'capitalize'}}>
+            <Icons size="small">arrow_drop_up</Icons>
+          </span>
+          <p>{ igKey } : { this.props.ingredients[igKey] }</p>
         </li>
       );
     });

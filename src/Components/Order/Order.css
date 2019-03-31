@@ -1,0 +1,31 @@
+span {
+  margin: 0 8.333%;
+  opacity: .66;
+  font-weight: 200;
+  font-size: .75rem;
+}
+
+span:first-child {
+  float: left;
+}
+
+span:last-child {
+  float: right;
+}
+
+.Order {
+  width: 83.333%;
+  font-size: 1rem;
+  border: 5px solid transparent;
+  box-sizing: border-box;
+  margin: 0 auto 2.5rem !important;
+  background-color: #c6ff00;
+}
+
+.Order > tbody > tr > td:first-child {
+  text-transform: capitalize;
+}
+
+.Order > tbody > tr:last-child > th {
+  text-align: center;
+}

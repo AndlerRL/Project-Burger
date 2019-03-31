@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 import BurgerIngredient from './BurgerIngredients/BurgerIngredient';
 
@@ -27,4 +28,4 @@ const burger = props => {
   );
 };
 
-export default burger;
+export default withRouter(burger);
