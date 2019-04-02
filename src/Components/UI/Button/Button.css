@@ -3,17 +3,18 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: transparent !important;
+  background-color: transparent;
   border: none;
   color: #f5f5f5;
   outline: none;
   cursor: pointer;
   font: inherit;
-  padding: .5rem;
+  padding: .25rem auto;
   min-height: 3.4rem;
   min-width: 6rem;
   margin: 1rem;
   font-weight: 300;
+  box-shadow: none;
   transition: all .25s ease-out;
 }
 
@@ -26,13 +27,20 @@
 }
 
 .Button i {
-  margin: -3px .5rem 0;
+  margin: -3px auto 0;
   flex-direction: row;
   font-size: 2rem;
 }
 
 .Success {
   color: #afb42b !important;
+}
+
+.Success:disabled {
+  background-color: #dce775 !important;
+  border: 1px solid #e6ee9c3a !important;
+  color: #4db6ac !important;
+  cursor: not-allowed;
 }
 
 .Success:hover {
@@ -53,4 +61,11 @@
   box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),
               0 3px 1px -2px rgba(0,0,0,0.12),
               0 1px 5px 0 rgba(0,0,0,0.2) !important;
+}
+
+.Danger:disabled {
+  background-color: #ff9e80 !important;
+  border: 1px solid #ffab913a !important;
+  color: #4db6ac !important;
+  cursor: not-allowed;
 }

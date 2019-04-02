@@ -1,6 +1,6 @@
 .ContactDataSummary {
   margin: 10rem auto;
-  width: 83.333%;
+  width: 91.666%;
   text-align: center;
   font-size: 1rem;
   padding: 2rem;
@@ -15,31 +15,14 @@
   margin-bottom: 4rem;
 }
 
-.ContactDataSummary input {
-  margin: 2rem auto !important;
-}
-
-.ContactDataSummary input::placeholder {
-  color: #424242b6;
-}
-
-.ContactDataSummary input:focus {
-  border-bottom: 1px solid #424242;
-  box-shadow: 0 1px 1px 0 #424242;
-}
-
-.ContactDataSummary input:focus + label {
-  color: #424242 !important;
-}
-
-.ContactDataSummary label {
-  color: #212121;
-  margin-bottom: 1rem !important;
+.ContactDataSummary button {
+  font-weight: 400 !important;
+  font-size: 1.25rem;
 }
 
 
 @media (min-width: 600px) {
   .ContactDataSummary {
-    width: 500px;
+    width: 575px;
   }
 }

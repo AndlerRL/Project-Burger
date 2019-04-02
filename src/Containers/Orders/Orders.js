@@ -15,7 +15,7 @@ class Orders extends Component {
     console.log(this.props)
     Axios.get('/orders.json')
       .then(res => {
-        console.log(res.data)
+        //console.log(res.data)
         const fetchedOrders = [];
 
         for (let key in res.data) {
@@ -24,6 +24,7 @@ class Orders extends Component {
             id: key
           });
         }
+        //console.log(fetchedOrders);
 
         this.setState({
           orders: fetchedOrders,
@@ -45,7 +46,7 @@ class Orders extends Component {
             <Order
               ingredients={order.ingredients}
               totalPrice={order.price}
-              userName={order.customer.name}
+              userName={order.orderData.name}
               key={order.id}
               id={createHash('sha1').update(order.id).digest('hex')} />
           ))
