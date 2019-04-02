@@ -1,0 +1,28 @@
+.ContactDataSummary {
+  margin: 10rem auto;
+  width: 91.666%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #c6ff00;
+  border-top: 1rem solid #eeff41;
+  border-bottom: 1rem solid #eeff41;
+  transition: all cubic-bezier(0.19, 1, 0.22, 1) .33s 200ms;
+}
+
+.ContactDataSummary h4 {
+  margin-bottom: 4rem;
+}
+
+.ContactDataSummary button {
+  font-weight: 400 !important;
+  font-size: 1.25rem;
+}
+
+
+@media (min-width: 600px) {
+  .ContactDataSummary {
+    width: 575px;
+  }
+}

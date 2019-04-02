@@ -2,14 +2,15 @@ import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
 import Button from '../../components/UI/Button/Button';
-import Icons from '../../components/UI/Icons/Icons';
+import Icon from '../../components/UI/Icons/Icons';
 import withClass from '../../hoc/with-class/with-class';
 
 import css from './OrderSummary.css'
 
 class OrderSummary extends Component {
   componentDidUpdate() {
-    console.log('[OrderSummary] Did Update');
+    //console.log('[OrderSummary] Did Update');
+    //console.log(this.props)
   }
 
   render () {
@@ -18,8 +19,10 @@ class OrderSummary extends Component {
       return (
         <li key={igKey}>
           <span>
-            <Icons size="small">arrow_drop_up</Icons>{igKey}:
-          </span> {this.props.ingredients[igKey]}
+            <Icon size="small">arrow_drop_up</Icon>
+            { igKey } :
+          </span>
+          <span> { this.props.ingredients[igKey] }</span> 
         </li>
       );
     });
@@ -37,13 +40,13 @@ class OrderSummary extends Component {
         clicked={this.props.purchaseCancelled}
         btnType="Danger">
         <span>CANCEL</span>
-        <Icons size="small">close</Icons>
+        <Icon size="small">close</Icon>
       </Button>
       <Button
         clicked={this.props.purchaseContinued}
         btnType="Success">
         <span>CONTINUE</span>
-        <Icons size="small">check</Icons>
+        <Icon size="small">check</Icon>
       </Button>
       </Aux>
     );

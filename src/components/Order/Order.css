@@ -1,0 +1,47 @@
+.orderNum {
+  margin: .5rem calc(50% - 143px);
+  opacity: .66;
+  font-weight: 200;
+  font-size: .75rem;
+  width: 83.333%;
+}
+
+.orderNum span {
+  float: left;
+}
+
+.Order {
+  width: 91.666%;
+  font-size: 1rem;
+  border: 5px solid transparent;
+  box-sizing: border-box;
+  margin: 0 auto 2.5rem !important;
+  background-color: #c6ff00;
+}
+
+.Order > tbody > tr > td,
+.Order > thead > tr > th {
+  text-align: center !important;
+}
+
+.Order > tbody > tr > td:first-child {
+  text-transform: capitalize;
+}
+
+.Order > tbody > tr:last-child > th {
+  text-align: center;
+}
+
+@media (min-width: 600px) {
+  .orderNum {
+    margin: .5rem calc(50% - 375px);
+  }
+  
+  .orderNum span:first-child {
+    margin: 0 13.3%;
+  }
+
+  .Order {
+    width: 575px;
+  }
+}

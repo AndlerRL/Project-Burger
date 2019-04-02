@@ -9,7 +9,7 @@ import NavigationItems from '../NavigationItems/NavigationItems';
 import css from './SideDrawer.css';
 
 const sideDrawer = props => {
-  let attachedCss = [css.SideDrawer, "z-depth-5", css.Close];
+  let attachedCss = [css.SideDrawer, css.Close];
 
   if (props.open) {
     attachedCss = [css.SideDrawer, "z-depth-5", css.Open]

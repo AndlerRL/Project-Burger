@@ -4,7 +4,8 @@ import css from './Button.css';
 
 const button = props => (
   <button
-    className={"btn btn-flat " + [css.Button, css[props.btnType]].join(' ')}
+    disabled={props.disabled}
+    className={"btn " + [css.Button, css[props.btnType]].join(' ')}
     onClick={props.clicked}>
     {props.children}
   </button>

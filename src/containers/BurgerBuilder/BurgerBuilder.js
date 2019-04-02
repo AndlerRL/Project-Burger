@@ -23,10 +23,12 @@ class BurgerBuilder extends Component {
     purchasable: false,
     purchasing: false,
     isLoading: false,
+    isCheckout: false,
     error: false
   }
 
   componentDidMount() {
+    console.log(this.props);
     Axios.get('/Ingredients.json')
       .then(res => {
         this.setState({
@@ -113,38 +115,21 @@ class BurgerBuilder extends Component {
     this.setState({
       isLoading: true
     });
+    //console.log(this.props)
+    const queryParams = [];
 
-    const order = {
-      ingredients: this.state.ingredients,
-      price: this.state.totalPrice,
-      //On a real app, the price should be recalculated on the server, so user cannot manipulate it
-      customer: {
-        name: 'Robert Lucas',
-        address: {
-          street: '1300 Tuxedo rd',
-          zipCode: '10109',
-          state: 'Texas',
-          country: 'United States'
-        },
-        email: 'test@test.uk'
-      },
-      deliveryMethod: 'ASAP'
+    for (let i in this.state.ingredients) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
     }
-    Axios.post('/orders.json', order)
-      .then(res => {
-        console.log(res)
-        this.setState({
-          isLoading: false,
-          purchasing: false
-        })
-      })
-      .catch(err => {
-        console.error(err)
-        this.setState({
-          isLoading: false,
-          purchasing: false
-        })
-      });
+    queryParams.push(`price=${this.state.totalPrice}`);
+
+    const queryString = queryParams.join('&');
+
+
+    this.props.history.push({
+      pathname: '/checkout',
+      search: '?' + queryString
+    });
   }
 
   render () {
