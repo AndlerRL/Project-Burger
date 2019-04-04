@@ -23,7 +23,9 @@ const input = props => {
 
   switch (props.elementType) {
     case ('input'):
-      inputElement = <input
+      inputElement =<input
+        ref={props.inputRef}
+        onKeyPress={props.keyPress}
         className={invalid} 
         {...props.elementConfig}
         value={props.value}
@@ -32,13 +34,17 @@ const input = props => {
     case ('email'):
       inputElement = <input
         className={invalid} 
+        ref={props.inputRef}
+        onKeyPress={props.keyPress}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed} />
       break;
     case ('textarea'):
       inputElement = <textarea
-        className={invalid} 
+        className={invalid}
+        ref={props.inputRef}
+        onKeyPress={props.keyPress}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed} />
@@ -47,6 +53,8 @@ const input = props => {
       inputElement = (
         <select
           className={invalid}
+          ref={props.inputRef}
+          onKeyPress={props.keyPress}
           value={props.value}
           onChange={props.changed}>
             <option disabled defaultValue>Choose your Delivery Option</option>
@@ -62,7 +70,9 @@ const input = props => {
       break;
     default:
       inputElement = <input
-        className={invalid} 
+        className={invalid}
+        ref={props.inputRef}
+        onKeyPress={props.keyPress}
         {...props.elementConfig}
         value={props.value}
         onChange={props.changed} />

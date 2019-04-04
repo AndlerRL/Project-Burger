@@ -8,8 +8,25 @@
   margin-bottom: 3rem;
 }
 
+.CheckoutBurger {
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: auto;
+}
+
+.CheckoutBtns {
+  width: 100%;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid #004d40b0;
+}
+
 @media (min-width: 600px) {
   .CheckoutSummary {
     width: 35rem;
+  }
+
+  .CheckoutBurger {
+    height: 375px;
   }
 }

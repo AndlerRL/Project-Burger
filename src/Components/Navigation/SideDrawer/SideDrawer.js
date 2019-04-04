@@ -28,7 +28,8 @@ const sideDrawer = props => {
         </span>
         <Logo height="10%" />
         <nav>
-          <NavigationItems />
+          <NavigationItems
+            clicked={props.closed} />
         </nav>
       </div>
     </Aux>

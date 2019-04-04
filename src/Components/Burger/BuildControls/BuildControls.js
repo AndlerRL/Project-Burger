@@ -14,14 +14,16 @@ const controls = [
 const buildControls = props => (
   <div className={css.BuildControls}>
     <p>Current custom Burger Price: USD ${props.price.toFixed(2)}</p>
-    { controls.map(ctrl => (
-      <BuildControl
-        key={ctrl.label}
-        label={ctrl.label}
-        added={() => props.ingredientAdded(ctrl.type)}
-        removed={() => props.ingredientRemoved(ctrl.type)}
-        disabled={props.disabled[ctrl.type]} />
-    )) }
+    <div className={"row"}>
+      { controls.map(ctrl => (
+        <BuildControl
+          key={ctrl.label}
+          label={ctrl.label}
+          added={() => props.ingredientAdded(ctrl.type)}
+          removed={() => props.ingredientRemoved(ctrl.type)}
+          disabled={props.disabled[ctrl.type]} />
+      )) }
+    </div>
     <button
       className={"btn btn-large z-depth-1-half waves-effect waves-light teal darken-3 " + css.OrderBtn}
       disabled={!props.purchasable}

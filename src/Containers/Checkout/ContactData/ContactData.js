@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Axios from '../../../axios-orders';
+import { connect } from 'react-redux';
 import M from 'materialize-css';
 
 import Spinner from '../../../components/UI/Spinner/Spinner';
@@ -119,12 +120,71 @@ class ContactData extends Component {
       }
     },
     formIsValid: false,
-    isLoading: false
+    isLoading: false,
+    input: 0
+  }
+
+  inputRef = React.createRef();
+
+  inputs = {
+    name: () => {
+      this.inputRef.current.form[0].focus()
+    },
+    street: () => {
+      this.inputRef.current.form[1].focus()
+      this.setState({ input: 1 })
+    },
+    zipCode: () => {
+      this.inputRef.current.form[2].focus()
+      this.setState({ input: 2 })
+    },
+    state: () => {
+      this.inputRef.current.form[3].focus()
+      this.setState({ input: 3 })
+    },
+    country: () => {
+      this.inputRef.current.form[4].focus()
+      this.setState({ input: 4 })
+    },
+    email: () => {
+      this.inputRef.current.form[5].focus()
+      this.setState({ input: 5 })
+    },
+    deliveryMethod: () => {
+      this.inputRef.current.form[6].focus()
+      this.setState({ input: 6 })
+    }
   }
 
   componentDidMount() {
     //console.log(this.props);
+    this.inputs.name();
     M.AutoInit();
+  }
+
+  onSubmit = e => {
+    if (e.key === 'Enter' || e.which === 13) {
+      if (this.state.input === 0)
+        return this.inputs.street();
+
+      if (this.state.input === 1)
+        return this.inputs.zipCode();
+
+      if (this.state.input === 2)
+        return this.inputs.state();
+
+      if (this.state.input === 3)
+        return this.inputs.country();
+
+      if (this.state.input === 4)
+        return this.inputs.email();
+
+      if (this.state.input === 5)
+        return this.inputs.deliveryMethod();
+
+      if (this.state.input === 6)
+        return null;
+    }
   }
 
   orderBurgerHandler = e => {
@@ -137,7 +197,7 @@ class ContactData extends Component {
     }
 
     const order = {
-      ingredients: this.props.ingredients,
+      ingredients: this.props.ings,
       price: this.props.price,
       orderData: formData
     }
@@ -211,6 +271,8 @@ class ContactData extends Component {
 
     let form = formElementsArray.map(formEle => (
       <Input
+        inputRef={this.inputRef}
+        keyPress={this.onSubmit}
         invalid={!formEle.config.validation.valid}
         shouldValidate={formEle.config.validation}
         touched={formEle.config.validation.touched}
@@ -228,6 +290,7 @@ class ContactData extends Component {
 
     return(
       <ContactDataSummary
+        form="Form"
         submit={this.orderBurgerHandler}>
         { form }
 
@@ -242,4 +305,11 @@ class ContactData extends Component {
   }
 }
 
-export default ContactData;
+const mapStateToProps = state => {
+  return {
+    ings: state.ingredients,
+    price: state.totalPrice
+  }
+}
+
+export default connect(mapStateToProps)(ContactData);
