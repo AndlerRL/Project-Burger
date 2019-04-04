@@ -2,16 +2,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem auto;
+  margin: 1rem auto !important;
   transition-delay: 0ms;
 }
 
 .BuildControl > button {
   display: block;
   font: inherit;
-  padding: .4rem;
-  margin: 0 .75rem;
-  width: 3.2rem;
+  padding: .66rem;
+  margin: 0 auto;
+  width: 3.8rem;
   height: 3.2rem;
   border: 1px solid #AA68173a;
   border-radius: 50%;
@@ -61,4 +61,12 @@
 .BuildControl > .More:hover,
 .BuildControl > .More:active {
   background-color: #00796b;
+}
+
+@media (min-width: 600px) {
+  .BuildControl > button {
+    padding: .4rem;
+    margin: 0 .75rem;
+    width: 3.2rem;
+  }
 }

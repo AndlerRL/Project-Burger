@@ -2,6 +2,7 @@ import { createHash } from 'crypto';
 import React, { Component } from 'react';
 
 import Axios from '../../axios-orders';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import Order from '../../components/Order/Order';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
@@ -39,18 +40,21 @@ class Orders extends Component {
   }
 
   render () {
+    let orders = this.state.orders.map(order => (
+      <Order
+        ingredients={order.ingredients}
+        totalPrice={order.price}
+        userName={order.orderData.name}
+        key={order.id}
+        id={createHash('sha1').update(order.id).digest('hex')} />
+    ))
+
+    if (this.state.isLoading)
+      orders = <Spinner />
+
     return (
       <div>
-        {
-          this.state.orders.map(order => (
-            <Order
-              ingredients={order.ingredients}
-              totalPrice={order.price}
-              userName={order.orderData.name}
-              key={order.id}
-              id={createHash('sha1').update(order.id).digest('hex')} />
-          ))
-        }
+        { orders }
       </div>
     );
   }

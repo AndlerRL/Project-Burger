@@ -5,7 +5,7 @@ import Icons from '../../../UI/Icons/Icons';
 import css from './BuildControl.css';
 
 const buildControl = props => (
-  <div className={css.BuildControl}>
+  <div className={css.BuildControl + " col s6 l3"}>
     <button
       className={css.Less + " btn waves-effect waves-circle z-depth-2"}
       onClick={props.removed}
@@ -23,4 +23,4 @@ const buildControl = props => (
   </div>
 );
 
-export default buildControl;
+export default React.memo(buildControl);

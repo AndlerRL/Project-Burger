@@ -36,3 +36,23 @@
   position: absolute;
   color: #00bfa5;
 }
+
+@media (orientation: landscape) {
+  .OrderSummary, 
+  .OrderSummary ul li span {
+    font-size: 1rem !important;
+  }
+
+  .OrderSummary ul {
+    flex-direction: row;
+  }
+
+  .OrderSummary ul li {
+    margin-left: -12px;
+  }
+
+  .OrderSummary ul li span i {
+    left: 12px;
+    margin-top: -1px;
+  }
+}

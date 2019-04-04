@@ -4,10 +4,19 @@ import NavigationItem from './NavigationItem/NavigationItem';
 
 import css from './NavigationItems.css';
 
-const navigationItems = () => (
+const navigationItems = props => (
   <ul className={css.NavigationItems}>
-    <NavigationItem link="/" exact>Burger Builder</NavigationItem>
-    <NavigationItem link="/orders">Orders</NavigationItem>
+    <NavigationItem
+      exact
+      link="/"
+      clicked={props.clicked}>
+      Burger Builder
+    </NavigationItem>
+    <NavigationItem
+      link="/orders"
+      clicked={props.clicked}>
+      Orders
+    </NavigationItem>
   </ul>
 );
 
