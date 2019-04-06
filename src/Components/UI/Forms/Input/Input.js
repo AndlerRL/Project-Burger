@@ -14,11 +14,11 @@ const input = props => {
 
   if (props.invalid && props.touched)
     validationError = (
-      <p 
-        className={css.ErrorMsg}>
+      <span 
+        className={"helper-text " + css.ErrorMsg}>
         <Icon size="tiny">report</Icon>
         Please, enter a valid {props.label}
-      </p>
+      </span>
     )
 
   switch (props.elementType) {
@@ -42,7 +42,7 @@ const input = props => {
       break;
     case ('textarea'):
       inputElement = <textarea
-        className={invalid}
+        className={"materialize-textarea " + invalid}
         ref={props.inputRef}
         onKeyPress={props.keyPress}
         {...props.elementConfig}

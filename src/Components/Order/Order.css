@@ -1,13 +1,18 @@
+.OrderContainer {
+  padding: 2rem 0 3rem;
+}
+
 .orderNum {
-  margin: .5rem calc(50% - 143px);
+  margin: .5rem auto !important;
   opacity: .66;
   font-weight: 200;
   font-size: .75rem;
-  width: 83.333%;
-}
-
-.orderNum span {
-  float: left;
+  width: 91.666%;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-around;
+  text-align: center;
+  padding: 0 auto;
 }
 
 .Order {
@@ -32,16 +37,50 @@
   text-align: center;
 }
 
+.BtnContainer { 
+  width: 91.666%;
+  font-size: 1rem !important;
+  margin: -3rem calc(8.333% - 50px) 0;
+  display: flex;
+  box-sizing: border-box;
+  margin: -2.25rem auto 0;
+}
+
+.BtnContainer > button {
+  color: transparent !important;
+  margin: 0 0 0 75% !important;
+  display: flex;
+  justify-content: right;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) .33s 100ms;
+}
+
+.BtnContainer > button:hover {
+  color: #fafafa;
+  background: #434343 !important;
+}
+
+.BtnContainer > button > i {
+  font-size: 1.2rem;
+  color: initial !important;
+  margin: 0 auto;
+}
+
+.BtnContainer > button > i:hover {
+  background: #434343;
+}
+
 @media (min-width: 600px) {
-  .orderNum {
-    margin: .5rem calc(50% - 375px);
-  }
-  
-  .orderNum span:first-child {
-    margin: 0 13.3%;
+  .Order,
+  .orderNum,
+  .BtnContainer {
+    width: 575px;
   }
 
-  .Order {
-    width: 575px;
+  .BtnContainer > button {
+    margin: 0 0 0 75% !important;
+  }
+
+  .BtnContainer > button > i {
+    margin: 0 0 0 2.5rem;
   }
 }

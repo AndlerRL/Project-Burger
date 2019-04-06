@@ -1,22 +1,34 @@
 .Input input,
-.Input select {
+.Input select,
+.Input textarea {
   margin: 2rem auto !important;
   padding: 0 8px !important;
 }
 
+.Input textarea {
+  margin: 4.5rem auto 2rem !important;
+}
+
+.Input label[for="additionalInfo"] {
+  margin: 1rem 0 !important;
+}
+
 .Input input::placeholder,
-.Input select::placeholder {
+.Input select::placeholder,
+.Input textarea::placeholder {
   color: #424242b6;
 }
 
 .Input input:focus,
-.Input select:focus {
+.Input select:focus,
+.Input textarea:focus {
   border-bottom: 1px solid #424242;
   box-shadow: 0 1px 1px 0 #424242;
 }
 
 .Input input:focus + label,
-.Input select:focus + label {
+.Input select:focus + label,
+.Input textarea:focus + label {
   color: #424242 !important;
 }
 

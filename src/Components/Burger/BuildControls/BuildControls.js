@@ -14,7 +14,7 @@ const controls = [
 const buildControls = props => (
   <div className={css.BuildControls}>
     <p>Current custom Burger Price: USD ${props.price.toFixed(2)}</p>
-    <div className={"row"}>
+    <div className={css.ControlsContainer + " row"}>
       { controls.map(ctrl => (
         <BuildControl
           key={ctrl.label}

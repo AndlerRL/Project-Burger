@@ -5,6 +5,20 @@
   border-radius: 0 0 30px 30px;
   box-shadow: inset -15px 0 #c15711;
   margin: 1% auto;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
+}
+
+.BreadBottom > div {
+  width: 112%;
+  height: 2px;
+  display: flex;
+  padding-top: 30px;
+  margin-left: -6%;
+  border-radius: 100%;
+  background: none;
+  box-shadow:  0 75px 5px #2121212a,
+  0 83px 10px 3px #2121211a;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
 }
 
 .BreadTop {
@@ -87,6 +101,7 @@
   background: linear-gradient(#7f3608, #702e05);
   margin: .75% auto;
   border-radius: 15px;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
 }
 
 .Cheese {
@@ -95,6 +110,7 @@
   margin: .75% auto;
   background: linear-gradient(#f4d004, #d6bb22);
   border-radius: 20px;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
 }
 
 .Salad {
@@ -103,6 +119,7 @@
   margin: .75% auto;
   background: linear-gradient(#228c1d, #91ce50);
   border-radius: 20px;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
 }
 
 .Bacon {
@@ -110,4 +127,5 @@
   height: 3%;
   background: linear-gradient(#bf3813, #c45e38);
   margin: .75% auto;
+  transition: all cubic-bezier(0.165, 0.84, 0.44, 1) .33s 100ms;
 }

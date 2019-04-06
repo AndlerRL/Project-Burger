@@ -18,7 +18,7 @@ class App extends Component {
     return (
       <Layout>
         <Switch>
-          { this.state.isCheckout ? <Route path="/checkout" component={Checkout} /> : null }
+          <Route path="/checkout" component={Checkout} />
           <Route exact path="/orders" component={Orders} />
           <Route exact path="/" component={BurgerBuilder} />
           <Route render={() => (
