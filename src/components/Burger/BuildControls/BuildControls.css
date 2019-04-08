@@ -8,10 +8,11 @@
   margin: 0 auto;
   padding: 1rem 0;
   border-top: 1rem solid #eeff41;
+  border-bottom: 1rem solid #eeff41;
 }
 
 .BuildControls > .OrderBtn {
-  margin: 2rem 0 8rem !important;
+  margin: 2rem 0 9.5rem !important;
 }
 
 .BuildControls > .OrderBtn:hover,
@@ -30,6 +31,18 @@
   animation: enable 0.33s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+.ControlsContainer {
+  width: 100%;
+  margin: 0 auto 4rem;
+}
+
+
+@media (min-width: 431px) {
+  .ControlsContainer {
+    width: 430px;
+  }
+}
+
 @media (min-width: 600px) {
   .BuildControls {
     width: 100%;
@@ -45,6 +58,10 @@
   
   .BuildControls > .OrderBtn {
     margin: 2rem 0;
+  }
+
+  .ControlsContainer {
+    width: 600px;
   }
 }
 

@@ -1,37 +1,25 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actionTypes from '../../store/actions';
+import React, { Component } from 'react';
 
+import * as actions from '../../store/actions/index';
 import Aux from '../../hoc/Aux/Aux';
-import Burger from '../../components/Burger/Burger';
+import Axios from '../../axios-orders';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
+import Burger from '../../components/Burger/Burger';
 import Modal from '../../components/UI/Modal/Modal';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import Axios from '../../axios-orders';
 
 class BurgerBuilder extends Component {
   state = {
     purchasing: false,
-    isLoading: false,
     isCheckout: false,
-    error: false
   }
 
   componentDidMount() {
     console.log(this.props);
-    /* Axios.get('/Ingredients.json')
-      .then(res => {
-        this.setState({
-          ingredients: res.data
-        })
-      })
-      .catch(err => {
-        this.setState({
-          error: true
-        })
-      }) */
+    this.props.onInitIngredients()
   }
 
   updatePurchaseState = ingredients => {
@@ -59,20 +47,17 @@ class BurgerBuilder extends Component {
   }
 
   purchaseContinueHandler = () => {
-    this.setState({
-      isLoading: true
-    });
     //console.log(this.props)
     const queryParams = [];
 
-    for (let i in this.state.ingredients) {
-      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+    for (let i in this.props.ings) {
+      queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.props.ings[i]))
     }
     queryParams.push(`price=${this.props.price}`);
 
     const queryString = queryParams.join('&');
 
-
+    this.props.onInitPurchase();
     this.props.history.push({
       pathname: '/checkout',
       search: '?' + queryString
@@ -89,7 +74,7 @@ class BurgerBuilder extends Component {
     }
 
     let orderSummary = null;
-    let burger = this.state.error ? <h1 align="center">Ingredients can't be loaded, sorry.</h1> : <Spinner />
+    let burger = this.props.error ? <h1 align="center">Ingredients can't be loaded, sorry.</h1> : <Spinner />
 
     if (this.props.ings) {
       burger = (
@@ -114,9 +99,6 @@ class BurgerBuilder extends Component {
       );
     }
 
-    if (this.state.isLoading)
-      orderSummary = <Spinner />
-
     return (
       <Aux>
         <Modal 
@@ -132,21 +114,18 @@ class BurgerBuilder extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    error: state.burgerBuilder.error
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onIngredientAdded: ingName => dispatch({
-      type: actionTypes.ADD_INGREDIENT,
-      ingredientName: ingName
-    }),
-    onIngredientRemove: ingName => dispatch({
-      type: actionTypes.REMOVE_INGREDIENT,
-      ingredientName: ingName
-    })
+    onIngredientAdded: ingName => dispatch(actions.addIngredient(ingName)),
+    onIngredientRemove: ingName => dispatch(actions.removeIngredient(ingName)),
+    onInitIngredients: () => dispatch(actions.initIngredients()),
+    onInitPurchase: () => dispatch(actions.purchaseInit())
   }
 }
 

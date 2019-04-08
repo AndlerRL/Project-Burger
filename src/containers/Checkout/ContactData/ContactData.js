@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import Axios from '../../../axios-orders';
 import { connect } from 'react-redux';
 import M from 'materialize-css';
+import React, { Component } from 'react';
 
-import Spinner from '../../../components/UI/Spinner/Spinner';
-import ContactDataSummary from '../../../components/Order/CheckoutSummary/ContactDataSummary/ContactDataSummary';
-import Input from '../../../components/UI/Forms/Input/Input';
+import Axios from '../../../axios-orders';
 import Button from '../../../components/UI/Button/Button';
+import ContactDataSummary from '../../../components/Order/CheckoutSummary/ContactDataSummary/ContactDataSummary';
 import Icon from '../../../components/UI/Icons/Icons';
+import Input from '../../../components/UI/Forms/Input/Input';
+import Spinner from '../../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
+import * as action from '../../../store/actions/index';
 
 class ContactData extends Component {
   state = {
@@ -117,10 +119,23 @@ class ContactData extends Component {
           valid: false,
           touched: false
         }
+      },
+      additionalInfo: {
+        elementType: 'textarea',
+        elementConfig: {
+          type: 'textarea',
+          placeholder: '[Opcional] Extra onion, mustard / Ring the bell...'
+        },
+        label: 'Additional Information',
+        value: '',
+        validation: {
+          required: false,
+          valid: false,
+          touched: false
+        }
       }
     },
     formIsValid: false,
-    isLoading: false,
     input: 0
   }
 
@@ -153,6 +168,10 @@ class ContactData extends Component {
     deliveryMethod: () => {
       this.inputRef.current.form[6].focus()
       this.setState({ input: 6 })
+    },
+    additionalInfo: () => {
+      this.inputRef.current.form[7].focus()
+      this.setState({ input: 7 })
     }
   }
 
@@ -183,6 +202,9 @@ class ContactData extends Component {
         return this.inputs.deliveryMethod();
 
       if (this.state.input === 6)
+        return this.inputs.additionalInfo();
+
+      if (this.state.input === 7)
         return null;
     }
   }
@@ -201,20 +223,8 @@ class ContactData extends Component {
       price: this.props.price,
       orderData: formData
     }
-    Axios.post('/orders.json', order)
-      .then(res => {
-        console.log(res)
-        this.setState({
-          isLoading: false
-        });
-        this.props.history.push('/');
-      })
-      .catch(err => {
-        console.error(err)
-        this.setState({
-          isLoading: false
-        })
-      });
+
+    this.props.onOrderBurger(order);
   }
 
   checkValidity(value, rules) {
@@ -285,7 +295,7 @@ class ContactData extends Component {
         changed={e => this.inputChangedHandler(e, formEle.id)} />
     ));
 
-    if (this.state.isLoading)
+    if (this.props.isLoading)
       form = <Spinner />;
 
     return(
@@ -307,9 +317,16 @@ class ContactData extends Component {
 
 const mapStateToProps = state => {
   return {
-    ings: state.ingredients,
-    price: state.totalPrice
+    ings: state.burgerBuilder.ingredients,
+    price: state.burgerBuilder.totalPrice,
+    isLoading: state.order.isLoading
   }
 }
 
-export default connect(mapStateToProps)(ContactData);
+const mapDispatchToProps = dispatch => {
+  return {
+    onOrderBurger: orderData => dispatch(action.purchaseBurger(orderData))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withErrorHandler(ContactData, Axios));
