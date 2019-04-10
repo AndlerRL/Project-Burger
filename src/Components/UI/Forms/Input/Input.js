@@ -17,7 +17,16 @@ const input = props => {
       <span 
         className={"helper-text " + css.ErrorMsg}>
         <Icon size="tiny">report</Icon>
-        Please, enter a valid {props.label}
+        Please, enter a valid {props.label}.
+      </span>
+    )
+
+  if (props.invalid && props.touched && props.label === 'Confirm Password')
+    validationError = (
+      <span 
+        className={"helper-text " + css.ErrorMsg}>
+        <Icon size="tiny">report</Icon>
+        Please, re-enter and confirm your Password.
       </span>
     )
 
@@ -66,6 +75,17 @@ const input = props => {
             </option>
           )) }
         </select>
+      )
+      break;
+    case ('password'):
+      inputElement = (
+        <input
+          className={invalid} 
+          ref={props.inputRef}
+          onKeyPress={props.keyPress}
+          {...props.elementConfig}
+          value={props.value}
+          onChange={props.changed} />
       )
       break;
     default:

@@ -10,3 +10,9 @@ export {
   deleteOrder,
   confirmDelete
 } from './order';
+export {
+  auth,
+  logout,
+  setAuthRedirectPath,
+  authCheckState
+} from './auth';

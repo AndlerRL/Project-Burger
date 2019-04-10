@@ -20,10 +20,10 @@ export const purchaseBurgerStart = () => {
     type: actionTypes.PURCHASE_BURGER_START
   }
 }
-export const purchaseBurger = orderData => {
+export const purchaseBurger = (orderData, token) => {
   return dispatch => {
     dispatch(purchaseBurgerStart());
-    Axios.post('/orders.json', orderData)
+    Axios.post('/orders.json?auth=' + token, orderData)
       .then(res => {
         console.log(res.data)
         dispatch(purchaseBurgerSuccess(createHash('sha1').update(res.data.name).digest('hex'), orderData));
@@ -74,10 +74,11 @@ export const confirmDelete = () => {
     type: actionTypes.CONFIRM_DELETE 
   }
 }
-export const fetchOrders = () => {
+export const fetchOrders = (token, userId) => {
   return dispatch => {
     dispatch(fetchOrdersStart())
-    Axios.get('/orders.json')
+    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
+    Axios.get('/orders.json' + queryParams)
         .then(res => {
           //console.log(res.data)
           const fetchedOrders = [];
