@@ -1,0 +1,141 @@
+.Container {
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+}
+
+.Login_BG {
+  background: url(../../assets//images//desconstructured_burger_bg.jpg) no-repeat fixed 50% 50%;
+  background-size: auto auto;
+  background-attachment: scroll;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  z-index: 0;
+  animation: zoomInOut linear 60s infinite;
+}
+
+.Login {
+  margin: 10rem auto 0;
+  width: 91.666%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 2rem;
+  box-sizing: border-box;
+  background-color: #c6ff00;
+  border-top: 1rem solid #eeff41;
+  border-bottom: 1rem solid #eeff41;
+  transform: scale(1) !important;
+  z-index: 99;
+}
+
+.Login h4 {
+  margin: 0 auto;
+  font-weight: 300;
+}
+
+.Login h6 {
+  font-weight: 100;
+  font-style: oblique;
+  margin-bottom: 2rem;
+}
+
+.Login button {
+  font-weight: 400 !important;
+  font-size: 1.25rem;
+}
+
+.Login p button {
+  font-weight: 100 !important;
+  margin: 0 auto;
+  padding: 0 14px;
+  text-transform: capitalize;
+}
+
+.Login p button:hover {
+  background-color: transparent !important;
+  box-shadow: none !important;
+  color: #212121 !important;
+  text-decoration-line: underline;
+}
+
+.Login p button:focus {
+  background-color: transparent !important;
+}
+
+.ErrorMsg {
+  width: 91.666%;
+  height: 3rem;
+  margin: 0 auto;
+  padding: 9px;
+  color: #ff1744;
+  font-weight: 600;
+  background-color: #004d40;
+  border-left: 2rem solid #00695c;
+  border-right: 2rem solid #00695c;
+}
+
+
+@media (min-width: 600px) {
+  .Login {
+    width: 575px;
+  }
+}
+
+@media (min-width: 1280px) and (min-height: 720px) {
+  .Login_BG {
+    background-size: 100% 100%;
+  }
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1);
+  }
+  8.333% {
+    background-position-y: 50%;
+    background-position-x: 50%; 
+  }
+  16.666% {
+    transform: scale(1.1);
+  }
+  25% {
+    background-position-y: 60%;
+    background-position-x: 70%;
+  }
+  33.333% {
+    transform: scale(1.2);
+  }
+  41.666% {
+    background-position-y: 65%;
+    background-position-x: 75%; 
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  58.333% {
+    background-position-y: 60%;
+    background-position-x: 70%; 
+  }
+  66.666% {
+    transform: scale(1.2);
+  }
+  75% {
+    background-position-y: 50%;
+    background-position-x: 60%;
+  }
+  83.333% {
+    transform: scale(1.1);
+  }
+  91.666% {
+    background-position-y: 40%;
+    background-position-x: 40%; 
+  }
+  100% {
+    transform: scale(1);
+  }
+}

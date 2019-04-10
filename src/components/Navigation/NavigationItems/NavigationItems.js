@@ -12,11 +12,26 @@ const navigationItems = props => (
       clicked={props.clicked}>
       Burger Builder
     </NavigationItem>
-    <NavigationItem
-      link="/orders"
-      clicked={props.clicked}>
-      Orders
-    </NavigationItem>
+    { props.isAuthenticated ?
+      <NavigationItem
+        link="/orders"
+        clicked={props.clicked}>
+        Orders
+      </NavigationItem> :
+      null }
+    { !props.isAuthenticated ?
+      <NavigationItem
+        exact
+        link="/sign-in"
+        clicked={props.clicked}>
+        Sign In / Up
+      </NavigationItem> :
+      <NavigationItem
+        exact
+        link="/logout"
+        clicked={props.clicked}>
+        Logout
+      </NavigationItem> }
   </ul>
 );
 
