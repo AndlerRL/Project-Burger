@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import Aux from '../../hoc/Aux/Aux';
 import CheckoutSummary from '../../components/Order/CheckoutSummary/CheckoutSummary';
 import ContactData from './ContactData/ContactData';
-import * as actions from '../../store/actions/index';
 
 class Checkout extends Component {
   checkoutCancelledHandler = () => {
@@ -48,10 +47,4 @@ const mapStateToProps = state => {
   }
 }
 
-const mapDispatchToProps = dispatch => {
-  return {
-    onInitPurchase: () => dispatch(actions.purchaseInit())
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(React.memo(Checkout));
+export default connect(mapStateToProps)(React.memo(Checkout));

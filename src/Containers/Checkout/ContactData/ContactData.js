@@ -2,6 +2,8 @@ import { connect } from 'react-redux';
 import M from 'materialize-css';
 import React, { Component } from 'react';
 
+import { updateObject, checkValidity } from '../../../shared/utility';
+import * as action from '../../../store/actions/index';
 import Axios from '../../../axios-orders';
 import Button from '../../../components/UI/Button/Button';
 import ContactDataSummary from '../../../components/Order/CheckoutSummary/ContactDataSummary/ContactDataSummary';
@@ -9,7 +11,6 @@ import Icon from '../../../components/UI/Icons/Icons';
 import Input from '../../../components/UI/Forms/Input/Input';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../../hoc/withErrorHandler/withErrorHandler';
-import * as action from '../../../store/actions/index';
 
 class ContactData extends Component {
   state = {
@@ -228,37 +229,18 @@ class ContactData extends Component {
     this.props.onOrderBurger(order, this.props.token);
   }
 
-  checkValidity(value, rules) {
-    let isValid = true;
-
-    if (rules.required)
-      isValid = value.trim() !== '' && isValid;
-
-    if (rules.minLength) 
-      isValid = value.length >= rules.minLength && isValid;
-
-    if (rules.maxLength) 
-      isValid = value.length <= rules.maxLength && isValid;
-    
-    if (rules.emailFormat)
-      isValid = rules.emailFormat.test(value) && isValid;
-
-    return isValid;
-  }
-
   inputChangedHandler = (e, inputId) => {
     let formIsValid = true;
-    const updatedOrderForm = {
-      ...this.state.orderForm
-    }
-    const updatedFormEle = {
-      ...updatedOrderForm[inputId]
-    }
-    updatedFormEle.value = e.target.value;
-    updatedFormEle.validation.valid = this.checkValidity(updatedFormEle.value, updatedFormEle.validation);
-    updatedFormEle.validation.touched = true;
-    updatedOrderForm[inputId] = updatedFormEle;
-    //console.log(updatedFormEle);
+    const updatedFormEle = updateObject(this.state.orderForm[inputId], {
+      value: e.target.value,
+      validation: {...this.state.orderForm[inputId].validation,
+        valid: checkValidity(e.target.value, this.state.orderForm[inputId].validation),
+        touched: true
+      }
+    })
+    const updatedOrderForm = updateObject(this.state.orderForm, {
+      [inputId]: updatedFormEle 
+    })
 
     for (let inputIds in updatedOrderForm)
       formIsValid = updatedOrderForm[inputIds].validation.valid && formIsValid;

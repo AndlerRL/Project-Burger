@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import React, { Component } from 'react';
 
 import Aux from '../../hoc/Aux/Aux';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';

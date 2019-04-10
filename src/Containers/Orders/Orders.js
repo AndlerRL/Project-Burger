@@ -1,14 +1,14 @@
-import { createHash } from 'crypto';
-import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { createHash } from 'crypto';
 import { Redirect } from 'react-router-dom'
+import React, { Component } from 'react';
 
-import Axios from '../../axios-orders';
-import Spinner from '../../components/UI/Spinner/Spinner';
-import Order from '../../components/Order/Order';
-import Modal from '../../components/UI/Modal/Modal';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
+import Axios from '../../axios-orders';
+import Modal from '../../components/UI/Modal/Modal';
+import Order from '../../components/Order/Order';
+import Spinner from '../../components/UI/Spinner/Spinner';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
 class Orders extends Component {
   state = {
