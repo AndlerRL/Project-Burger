@@ -1,5 +1,6 @@
-import * as actionTypes from './actionsTypes';
 import axios from 'axios';
+
+import * as actionTypes from './actionsTypes';
 
 export const authStart = () => {
   return {
@@ -50,7 +51,7 @@ export const auth = (email, password, isSignup) => {
       
     axios.post(url, authData)
       .then(res => {
-        console.log(res);
+        //console.log(res);
         const expDate = new Date(new Date().getTime() + res.data.expiresIn * 1000);
         localStorage.setItem('token', res.data.idToken);
         localStorage.setItem('expDate', expDate);
@@ -59,7 +60,7 @@ export const auth = (email, password, isSignup) => {
         dispatch(checkAuthTimeout(res.data.expiresIn));
       })
       .catch(err => {
-        console.log(err);
+        //console.log(err);
         dispatch(authFail(err.response.data.error));
       })
   }

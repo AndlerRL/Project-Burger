@@ -1,6 +1,7 @@
+import { createHash } from 'crypto';
+
 import * as actionTypes from './actionsTypes';
 import Axios from '../../axios-orders';
-import { createHash } from 'crypto';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
   return {
@@ -25,11 +26,11 @@ export const purchaseBurger = (orderData, token) => {
     dispatch(purchaseBurgerStart());
     Axios.post('/orders.json?auth=' + token, orderData)
       .then(res => {
-        console.log(res.data)
+        //console.log(res.data)
         dispatch(purchaseBurgerSuccess(createHash('sha1').update(res.data.name).digest('hex'), orderData));
       })
       .catch(err => {
-        console.error(err)
+        //console.error(err)
         dispatch(purchaseBurgerFail(err));
       });
   }
