@@ -6,7 +6,7 @@ const initState = {
   userId: null,
   error: null,
   isLoading: false,
-  authRedirectPath: '/'
+  authRedirectPath: '/burger-builder'
 }
 
 const authStart = (state, action) => {

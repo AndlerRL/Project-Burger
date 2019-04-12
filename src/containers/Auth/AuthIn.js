@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
+import AOS from 'aos';
 
 import { updateObject, checkValidity } from '../../shared/utility';
 import * as actions from '../../store/actions/index';
@@ -49,9 +50,17 @@ class Auth extends Component {
   }
 
   componentDidMount () {
+    AOS.init({
+      duration: 500,
+      offset: 10
+    })
     if (!this.props.building && this.props.authRedirectPath !== '/')
       this.props.onSetAuthRedirectPath();
-  } 
+  }
+
+  componentDidUpdate () {
+    AOS.refresh()
+  }
 
   inputChangedHandler = (e, controlName) => {
     const updatedControlsIn = updateObject(this.state.controlsIn, {
@@ -122,7 +131,7 @@ class Auth extends Component {
         signUpRedirect = <Redirect to="/sign-up" />
 
     return (
-      <div className={css.Container}>
+      <div className={css.Container} data-aos="zoom-out">
         { authRedirect }
         { signUpRedirect }
         <div className={css.Login_BG}>
@@ -161,7 +170,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
-    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+    onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/burger-builder'))
   }
 }
 

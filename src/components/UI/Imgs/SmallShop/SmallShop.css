@@ -1,0 +1,11 @@
+.SmallShop {
+  background-color: transparent;
+  padding: 10px;
+  height: 100%;
+  margin: auto 0;
+  box-sizing: border-box;
+}
+
+.SmallShop img {
+  width: 100%;
+}

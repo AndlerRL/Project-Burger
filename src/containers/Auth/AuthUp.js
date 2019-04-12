@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
+import AOS from 'aos';
 
 import { updateObject, checkValidity } from '../../shared/utility';
 import * as actions from '../../store/actions/index';
@@ -62,6 +63,18 @@ class Auth extends Component {
       }
     },
     isSignup: true
+  }
+
+  componentDidMount () {
+    AOS.init({
+      duration: 500,
+      offset: 10,
+      delay: 0
+    })
+  }
+
+  componentDidUpdate () {
+    AOS.refresh();
   }
 
   inputChangedHandler = (e, controlName) => {
@@ -136,7 +149,7 @@ class Auth extends Component {
         { signInRedirect }
         <div className={css.Login_BG}>
         </div>
-          <div className={"z-depth-2 " + css.Login}>
+          <div className={"z-depth-2 " + css.Login} data-aos="fade-left">
             <form onSubmit={this.submitHandler}>
             <h4>Burger Builder App</h4>
             <h6>... a burger, made by you!</h6>

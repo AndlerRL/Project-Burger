@@ -7,7 +7,7 @@
 .Copyright {
   background-color: #004d40;
   font-weight: 200;
-  position: fixed;
+  position: relative;
   text-align: center;
   box-sizing: border-box;
   bottom: 0;
