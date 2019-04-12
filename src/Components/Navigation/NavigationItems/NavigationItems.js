@@ -10,6 +10,12 @@ const navigationItems = props => (
       exact
       link="/"
       clicked={props.clicked}>
+      Home
+    </NavigationItem>
+    <NavigationItem
+      exact
+      link="/burger-builder"
+      clicked={props.clicked}>
       Burger Builder
     </NavigationItem>
     { props.isAuthenticated ?

@@ -39,6 +39,11 @@ class Orders extends Component {
       textAlign: 'center'
     }
 
+    let orderDel = {
+      padding: '16px',
+      margin: '5rem auto'
+    }
+
     let orders = this.props.orders.map(order => (
       <Order
         ingredients={order.ingredients}
@@ -49,7 +54,7 @@ class Orders extends Component {
         delete={() => this.props.onDeleteOrder(order.id)} />
     ));
 
-    let redirect = !this.state.isDeleted ? <Redirect to="/" /> : null;
+    let redirect = !this.state.isDeleted ? <Redirect to="/burger-builder" /> : null;
 
     if (this.props.isLoading)
       orders = <Spinner />
@@ -69,7 +74,7 @@ class Orders extends Component {
           <Modal
             show={this.state.isDeleted}
             modalClosed={this.confirmDeleteHandler}>
-            <h2>Your order has been deleted!</h2>
+            <h2 style={orderDel}>Oh, dear. Well, your order has been deleted.</h2>
           </Modal> : null }
         { redirect }
         { orders }

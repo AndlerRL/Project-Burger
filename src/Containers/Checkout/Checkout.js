@@ -19,7 +19,7 @@ class Checkout extends Component {
     let summary = <Redirect to="/" />
 
     if (this.props.ings) {
-      const purchaseRedirect = this.props.purchased ? <Redirect to="/" /> : null;
+      const purchaseRedirect = this.props.purchased ? <Redirect to="/burger-builder" /> : null;
       summary = (
         <Aux>
           { purchaseRedirect }

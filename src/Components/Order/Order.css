@@ -51,12 +51,13 @@
   margin: 0 0 0 75% !important;
   display: flex;
   justify-content: right;
-  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) .33s 100ms;
+  transition: all cubic-bezier(0.175, 0.885, 0.32, 1.275) .33s 300ms;
 }
 
 .BtnContainer > button:hover {
-  color: #fafafa;
-  background: #434343 !important;
+  color: #d50000 !important;
+  background: none !important;
+  box-shadow: none !important;
 }
 
 .BtnContainer > button > i {
@@ -66,7 +67,7 @@
 }
 
 .BtnContainer > button > i:hover {
-  background: #434343;
+  color: #d50000 !important;
 }
 
 @media (min-width: 600px) {
