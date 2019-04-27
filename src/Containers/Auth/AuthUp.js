@@ -77,11 +77,33 @@ class Auth extends Component {
     AOS.refresh();
   }
 
+  checkValidity = (value, rules) => {
+    let isValid = true;
+  
+    if (rules.required)
+      isValid = value.trim() !== '' && isValid;
+  
+    if (rules.minLength) 
+      isValid = value.length >= rules.minLength && isValid;
+  
+    if (rules.maxLength) 
+      isValid = value.length <= rules.maxLength && isValid;
+    
+    if (rules.emailFormat)
+      isValid = rules.emailFormat.test(value) && isValid;
+  
+    if (rules.sameAsPW) {
+      isValid = value === this.state.controlsUp.password.value && isValid;
+    }
+  
+    return isValid;
+  }
+
   inputChangedHandler = (e, controlName) => {
     const updatedControlsUp = updateObject(this.state.controlsUp, {
       [controlName]: updateObject(this.state.controlsUp[controlName], {
         value: e.target.value,
-        valid: checkValidity(e.target.value, this.state.controlsUp[controlName].validation),
+        valid: this.checkValidity(e.target.value, this.state.controlsUp[controlName].validation),
         touched: true
       })
     });

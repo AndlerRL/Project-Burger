@@ -13,13 +13,6 @@
   transition-delay: 200ms;
 }
 
-@media (orientation: landscape) {
-  .Modal {
-    top: 1vh;
-    height: 97.333%;
-  }
-}
-
 @media (min-width: 600px) {
   .Modal {
       width: 500px;
