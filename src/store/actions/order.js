@@ -1,7 +1,4 @@
-import { createHash } from 'crypto';
-
 import * as actionTypes from './actionsTypes';
-import Axios from '../../axios-orders';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
   return {
@@ -22,17 +19,10 @@ export const purchaseBurgerStart = () => {
   }
 }
 export const purchaseBurger = (orderData, token) => {
-  return dispatch => {
-    dispatch(purchaseBurgerStart());
-    Axios.post('/orders.json?auth=' + token, orderData)
-      .then(res => {
-        //console.log(res.data)
-        dispatch(purchaseBurgerSuccess(createHash('sha1').update(res.data.name).digest('hex'), orderData));
-      })
-      .catch(err => {
-        //console.error(err)
-        dispatch(purchaseBurgerFail(err));
-      });
+  return {
+    type: actionTypes.PURCHASE_BURGER,
+    orderData: orderData,
+    token: token
   }
 }
 export const purchaseInit = () => {
@@ -76,36 +66,16 @@ export const confirmDelete = () => {
   }
 }
 export const fetchOrders = (token, userId) => {
-  return dispatch => {
-    dispatch(fetchOrdersStart())
-    const queryParams = '?auth=' + token + '&orderBy="userId"&equalTo="' + userId + '"';
-    Axios.get('/orders.json' + queryParams)
-        .then(res => {
-          //console.log(res.data)
-          const fetchedOrders = [];
-          for (let key in res.data) {
-            fetchedOrders.push({
-              ...res.data[key],
-              id: key
-            });
-          }
-          //console.log(fetchedOrders);
-          dispatch(fetchOrdersSuccess(fetchedOrders));
-        })
-        .catch(err => {
-          dispatch(fetchOrdersFail(err));
-        })
+  return {
+    type: actionTypes.FETCH_ORDERS,
+    token: token,
+    userId: userId
   }
 }
-export const deleteOrder = orderId => {
-  return dispatch => {
-    Axios.delete(`/orders/${orderId}.json`)
-      .then(res => {
-        console.log(res);
-        dispatch(fetchOrdersDelete(orderId));
-      })
-      .catch(err => {
-        dispatch(fetchOrdersDeleteFail(err));
-      })
+export const deleteOrder = (token, orderId) => {
+  return {
+    type: actionTypes.DELETE_ORDER,
+    orderId: orderId,
+    token: token
   }
 }

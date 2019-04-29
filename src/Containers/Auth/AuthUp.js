@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import AOS from 'aos';
 
-import { updateObject, checkValidity } from '../../shared/utility';
+import { updateObject } from '../../shared/utility';
 import * as actions from '../../store/actions/index';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Forms/Input/Input';

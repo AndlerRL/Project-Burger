@@ -52,7 +52,7 @@ class Home extends React.Component {
           <span id="about-us"></span>
           <div
             className={css.Container}
-            data-aos="zoom-in"
+            data-aos="fade-down"
             data-aos-offset="500">
             <p className={css.Lead_in}>
               Did you ever wander to taste a burger built by you but, prepared by a tremendous chef? Have you ever wanted to select the finest ingredients for your burger and being delivered at the door of your comfortable home?<br/>

@@ -1,4 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Cantarell:400,700');
+html {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;

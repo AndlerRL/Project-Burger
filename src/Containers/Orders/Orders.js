@@ -7,6 +7,7 @@ import * as actions from '../../store/actions/index';
 import Axios from '../../axios-orders';
 import Modal from '../../components/UI/Modal/Modal';
 import Order from '../../components/Order/Order';
+import Button from '../../components/UI/Button/Button';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 
@@ -40,8 +41,9 @@ class Orders extends Component {
     }
 
     let orderDel = {
-      padding: '16px',
-      margin: '5rem auto'
+      padding: '0 1rem',
+      margin: '2.5rem auto',
+      textAlign: 'center'
     }
 
     let orders = this.props.orders.map(order => (
@@ -51,7 +53,7 @@ class Orders extends Component {
         userName={order.orderData.name}
         key={order.id}
         id={createHash('sha1').update(order.id).digest('hex')}
-        delete={() => this.props.onDeleteOrder(order.id)} />
+        delete={() => this.props.onDeleteOrder(this.props.token, order.id)} />
     ));
 
     let redirect = !this.state.isDeleted ? <Redirect to="/burger-builder" /> : null;
@@ -74,7 +76,15 @@ class Orders extends Component {
           <Modal
             show={this.state.isDeleted}
             modalClosed={this.confirmDeleteHandler}>
-            <h2 style={orderDel}>Oh, dear. Well, your order has been deleted.</h2>
+            <div style={orderDel}>
+              <h2>Success!</h2>
+              <p>Your order has been deleted! so bad that you don't want it.</p>
+              <Button
+                btnType="Danger"
+                clicked={this.confirmDeleteHandler}>
+                DISMISS
+              </Button>
+            </div>
           </Modal> : null }
         { redirect }
         { orders }
@@ -96,7 +106,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     onFetchOrders: (token, userId) => dispatch(actions.fetchOrders(token, userId)),
-    onDeleteOrder: orderId => dispatch(actions.deleteOrder(orderId)),
+    onDeleteOrder: (token, orderId) => dispatch(actions.deleteOrder(token, orderId)),
     onConfirmDelete: () => dispatch(actions.confirmDelete())
   }
 }
