@@ -23,8 +23,8 @@ export const checkValidity = (value, rules, pw, cpw) => {
   if (rules.sameAsPW)
     isValid = value !== rules.value && isValid;
 
-  if (rules.confirmPW) 
-    isValid = (pw === cpw && isValid) && (pw.length >= rules.minLength && cpw.length >= rules.minLength);
+  if (rules.confirmPW)
+    isValid = (value === cpw || value === pw) && isValid;
 
   return isValid;
 }
