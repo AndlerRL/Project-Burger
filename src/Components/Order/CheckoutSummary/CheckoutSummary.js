@@ -23,18 +23,18 @@ const checkoutSummary = props => {
     <div className={css.CheckoutSummary} data-aos="fade-right">
       <h2>We know that you would like it!</h2>
       <div className={css.CheckoutBurger}>
-        <Burger ingredients={this.props.ingredients} />
+        <Burger ingredients={props.ingredients} />
       </div>
       <div className={css.CheckoutBtns}>
         <Button
           btnType="Danger"
-          clicked={this.props.checkoutCancel}>
+          clicked={props.checkoutCancel}>
           CANCEL
           <Icons size="small">close</Icons>
         </Button>
         <Button
           btnType="Success"
-          clicked={this.props.checkoutContinue}>
+          clicked={props.checkoutContinue}>
           CONTINUE
           <Icons size="small">check</Icons>
         </Button>

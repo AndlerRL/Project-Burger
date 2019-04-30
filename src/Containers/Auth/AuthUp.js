@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 
-import { updateObject } from '../../shared/utility';
+import { updateObject, checkValidity } from '../../shared/utility';
 import * as actions from '../../store/actions/index';
 import Button from '../../components/UI/Button/Button';
 import Input from '../../components/UI/Forms/Input/Input';
@@ -38,7 +38,8 @@ const auth = props => {
       value: '',
       validation: {
         required: true,
-        minLength: 6
+        minLength: 6,
+        confirmPW: true
       },
       valid: false,
       touched: false,
@@ -54,41 +55,29 @@ const auth = props => {
       validation: {
         required: true,
         minLength: 6,
-        sameAsPW: true
+        confirmPW: true
       },
       valid: false,
       touched: false,
     }
   });
   const [isSignup, setIsSignup] = useState(true);
+  const [pw, setPW] = useState(null);
+  const [cpw, setCPW] = useState(null);
+  const pwRef = useRef();
+  let checkPW = pw === cpw && (pw !== '' && cpw !== '');
 
-  const checkValidity = (value, rules) => {
-    let isValid = true;
-  
-    if (rules.required)
-      isValid = value.trim() !== '' && isValid;
-  
-    if (rules.minLength) 
-      isValid = value.length >= rules.minLength && isValid;
-  
-    if (rules.maxLength) 
-      isValid = value.length <= rules.maxLength && isValid;
-    
-    if (rules.emailFormat)
-      isValid = rules.emailFormat.test(value) && isValid;
-  
-    if (rules.sameAsPW) {
-      isValid = value === controlsUp.password.value && isValid;
-    }
-  
-    return isValid;
-  }
+  useEffect(() => {
+    console.log(pw, cpw)
+  }, [pw, cpw])
 
   const inputChangedHandler = (e, controlName) => {
+    setPW(pwRef.current.parentElement.parentElement[1].value);
+    setCPW(pwRef.current.value);
     const updatedControlsUp = updateObject(controlsUp, {
       [controlName]: updateObject(controlsUp[controlName], {
         value: e.target.value,
-        valid: checkValidity(e.target.value, controlsUp[controlName].validation),
+        valid: checkValidity(e.target.value, controlsUp[controlName].validation, pw, cpw),
         touched: true
       })
     });
@@ -126,6 +115,7 @@ const auth = props => {
           value={formEle.config.value}
           label={formEle.config.label}
           for={formEle.id}
+          inputRef={pwRef}
           changed={e => inputChangedHandler(e, formEle.id)} />
       ))
 
@@ -155,7 +145,9 @@ const auth = props => {
           <h6>... a burger, made by you!</h6>
             { errorMsg }
             { form }
-            <Button btnType="Success">
+            <Button
+              btnType="Success"
+              disabled={!checkPW} >
               Sign Up
             </Button>
           </form>

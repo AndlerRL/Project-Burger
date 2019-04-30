@@ -28,22 +28,22 @@ const buildControls = props => {
       className={css.BuildControls}
       data-aos="fade-right"
       data-aos-offset="10">
-      <p>Current custom Burger Price: USD ${this.props.price.toFixed(2)}</p>
+      <p>Current custom Burger Price: USD ${props.price.toFixed(2)}</p>
       <div className={css.ControlsContainer + " row"}>
         { controls.map(ctrl => (
           <BuildControl
             key={ctrl.label}
             label={ctrl.label}
-            added={() => this.props.ingredientAdded(ctrl.type)}
-            removed={() => this.props.ingredientRemoved(ctrl.type)}
-            disabled={this.props.disabled[ctrl.type]} />
+            added={() => props.ingredientAdded(ctrl.type)}
+            removed={() => props.ingredientRemoved(ctrl.type)}
+            disabled={props.disabled[ctrl.type]} />
         )) }
       </div>
       <button
         className={"btn btn-large z-depth-1-half waves-effect waves-light teal darken-3 " + css.OrderBtn}
-        disabled={!this.props.purchasable}
-        onClick={this.props.ordered}>
-        {this.props.isAuth ? 'ORDER NOW' : 'SIGN UP TO ORDER'}
+        disabled={!props.purchasable}
+        onClick={props.ordered}>
+        {props.isAuth ? 'ORDER NOW' : 'SIGN UP TO ORDER'}
       </button>
     </div>
   );

@@ -5,7 +5,7 @@ export const updateObject = (oldObj, updatedProps) => {
   };
 };
 
-export const checkValidity = (value, rules) => {
+export const checkValidity = (value, rules, pw, cpw) => {
   let isValid = true;
 
   if (rules.required)
@@ -20,9 +20,11 @@ export const checkValidity = (value, rules) => {
   if (rules.emailFormat)
     isValid = rules.emailFormat.test(value) && isValid;
 
-  if (rules.sameAsPW) {
-    isValid = value === this.state.controlsUp.password.value && isValid;
-  }
+  if (rules.sameAsPW)
+    isValid = value !== rules.value && isValid;
+
+  if (rules.confirmPW) 
+    isValid = (pw === cpw && isValid) && (pw.length >= rules.minLength && cpw.length >= rules.minLength);
 
   return isValid;
 }

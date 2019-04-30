@@ -25,20 +25,20 @@ const order = props => {
   }
 
   const amount = [];
-  for (let ingredient in this.props.ingredients) {
+  for (let ingredient in props.ingredients) {
     amount.push({
       name: ingredient,
-      amount: this.props.ingredients[ingredient]
+      amount: props.ingredients[ingredient]
     })
   }
 
-  //console.log(amount, this.props)
+  //console.log(amount, props)
   
   return (
     <div className={css.OrderContainer} data-aos="fade-right">
       <div className={css.orderNum}>
-        <span>Order # {this.props.id}</span>
-        <span>Customer: {this.props.userName}</span>
+        <span>Order # {props.id}</span>
+        <span>Customer: {props.userName}</span>
       </div>
       <table className={css.Order + ' striped z-depth-3'}>
         <thead>
@@ -78,14 +78,14 @@ const order = props => {
             <td>–––</td>
             <td>–––</td>
             <td>–––</td>
-            <th>${parseFloat(this.props.totalPrice).toFixed(2)}</th>
+            <th>${parseFloat(props.totalPrice).toFixed(2)}</th>
           </tr>
         </tbody>
       </table>
       <div className={css.BtnContainer}>
         <Button
           btnType="Danger"
-          clicked={this.props.delete}>
+          clicked={props.delete}>
           DELETE
           <Icon size="tiny">close</Icon>
         </Button>
