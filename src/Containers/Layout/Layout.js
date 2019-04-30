@@ -1,43 +1,36 @@
 import { connect } from 'react-redux';
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-import Aux from '../../hoc/Aux/Aux';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 
 import css from './Layout.css';
 
-class Layout extends Component {
-  state = {
-    showSideDrawer: false
+const layout = props => {
+  const [showSideDrawer, setShowSideDrawer] = useState(false);
+
+  const sideDrawerToggleHandler = () => {
+    setShowSideDrawer(!showSideDrawer);
   }
 
-  sideDrawerToggleHandler = () => {
-    this.setState(prevState => {
-      return { showSideDrawer: !prevState.showSideDrawer }
-    })
-  }
-
-  render () {
-    return (
-      <Aux>
-        <Toolbar 
-          isAuth={this.props.isAuthenticated}
-          toggleMenu={this.sideDrawerToggleHandler} />
-        <SideDrawer
-          isAuth={this.props.isAuthenticated}
-          open={this.state.showSideDrawer}
-          closed={this.sideDrawerToggleHandler}
-          back={this.sideDrawerToggleHandler} />
-        <main className={css.MainContent}>
-          {this.props.children}
-        </main>
-        <footer className={css.Copyright}>
-          Webapp made with love by <a href="http://Andlerrl.co" target="_blank" rel="noopener noreferrer">AndlerRL</a>. 2018 ® All rights reserved.
-        </footer>
-      </Aux>
-    );
-  }
+  return (
+    <React.Fragment>
+      <Toolbar 
+        isAuth={props.isAuthenticated}
+        toggleMenu={sideDrawerToggleHandler} />
+      <SideDrawer
+        isAuth={props.isAuthenticated}
+        open={showSideDrawer}
+        closed={sideDrawerToggleHandler}
+        back={sideDrawerToggleHandler} />
+      <main className={css.MainContent}>
+        {props.children}
+      </main>
+      <footer className={css.Copyright}>
+        Webapp made with love by <a href="http://Andlerrl.co" target="_blank" rel="noopener noreferrer">AndlerRL</a>. 2018 ® All rights reserved.
+      </footer>
+    </React.Fragment>
+  );
 };
 
 const mapStateToProps = state => {
@@ -46,4 +39,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Layout);
+export default connect(mapStateToProps)(layout);

@@ -1,6 +1,5 @@
 import React from 'react';
 
-import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Icons from '../../UI/Icons/Icons';
 import Logo from '../../Logo/Logo';
@@ -16,7 +15,7 @@ const sideDrawer = props => {
   }
   
   return (
-    <Aux>
+    <React.Fragment>
       <Backdrop
         show={props.open}
         cancel={props.closed} />
@@ -33,7 +32,7 @@ const sideDrawer = props => {
             clicked={props.closed} />
         </nav>
       </div>
-    </Aux>
+    </React.Fragment>
   );
 };
 

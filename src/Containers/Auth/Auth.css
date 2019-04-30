@@ -17,7 +17,6 @@
   overflow: hidden;
   z-index: 0;
   animation: zoomInOut linear 60s infinite;
-  animation-delay: 1000ms;
 }
 
 .Login {
@@ -32,6 +31,7 @@
   border-bottom: 1rem solid #eeff41;
   transform: scale(1) !important;
   z-index: 99;
+  animation: fade cubic-bezier(0.175, 0.885, 0.32, 1.1) .5s forwards;
 }
 
 .Login h4 {
@@ -95,21 +95,15 @@
 
 @keyframes zoomInOut {
   0% {
-    transform: scale(1);
+    transform: scale(1.1);
   }
   8.333% {
     background-position-y: 50%;
     background-position-x: 50%; 
   }
-  16.666% {
-    transform: scale(1.1);
-  }
   25% {
     background-position-y: 60%;
     background-position-x: 70%;
-  }
-  33.333% {
-    transform: scale(1.2);
   }
   41.666% {
     background-position-y: 65%;
@@ -122,21 +116,26 @@
     background-position-y: 60%;
     background-position-x: 70%; 
   }
-  66.666% {
-    transform: scale(1.2);
-  }
   75% {
     background-position-y: 50%;
     background-position-x: 60%;
-  }
-  83.333% {
-    transform: scale(1.1);
   }
   91.666% {
     background-position-y: 40%;
     background-position-x: 40%; 
   }
   100% {
-    transform: scale(1);
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fade {
+  0% {
+    transform: translateX(-120vw);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
   }
 }

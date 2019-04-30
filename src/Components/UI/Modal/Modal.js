@@ -1,12 +1,11 @@
 import React from 'react';
 
-import Aux from '../../../hoc/Aux/Aux';
 import Backdrop from '../Backdrop/Backdrop';
 
 import css from './Modal.css';
 
 const modal = props => (
-  <Aux>
+  <React.Fragment>
     <Backdrop
       cancel={props.modalClosed}
       show={props.show} />
@@ -18,7 +17,7 @@ const modal = props => (
       className={"z-depth-5 " + css.Modal}>
       {props.children}
     </div>
-  </Aux>
+  </React.Fragment>
 );
 
-export default React.memo(modal);
+export default React.memo(modal, (prevProps, nextProps) => nextProps.show === prevProps.show && nextProps.children === prevProps.children);
